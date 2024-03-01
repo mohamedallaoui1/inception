@@ -1,6 +1,22 @@
 version: '3'
 
-
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mallaoui/data/mariadb
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mallaoui/data/wordpress
+  
+networks:
+    inception:
+      driver: bridge
 
 services:
   mariadb:
@@ -50,20 +66,3 @@ services:
     depends_on:
       - mariadb
 
-volumes:
-  mariadb:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/mallaoui/data/mariadb
-  wordpress:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/mallaoui/data/wordpress
-  
-networks:
-    inception:
-      driver: bridge
