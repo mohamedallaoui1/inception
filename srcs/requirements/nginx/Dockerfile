@@ -6,11 +6,10 @@ RUN apt-get update -y && apt-get upgrade -y && \
     apt install openssl -y && \
     openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/CN=$DOMAIN"
 
-RUN mkdir -p /var/run/nginx
-
-
 RUN chmod 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html
+
+RUN mkdir -p /var/run/nginx
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 
