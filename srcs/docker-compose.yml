@@ -21,6 +21,7 @@ networks:
 services:
   mariadb:
     container_name: mariadb
+    image: mariadb
     networks:
       - inception
     build:
@@ -36,6 +37,7 @@ services:
   
   nginx:
     container_name: nginx
+    image: nginx
     volumes:
       - wordpress:/var/www/wordpress
     networks:
@@ -51,6 +53,7 @@ services:
   
   wordpress:
     container_name: wordpress
+    image: wordpress
     networks:
       - inception
     build:
@@ -65,3 +68,44 @@ services:
       - "9000:9000"
     depends_on:
       - mariadb
+  
+  redis:
+    container_name: redis
+    image: redis
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - inception
+    build:
+      context: ./requirements/bonus/redis/
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+    restart: always
+
+  static_page:
+    container_name: static_page
+    image: static_page
+    networks:
+      - inception
+    build:
+      context: ./requirements/bonus/static_page/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    restart: always
+  ftp:
+    container_name: ftp
+    image: ftp
+    networks:
+      - inception
+    env_file:
+      - .env
+    build:
+      context: ./requirements/bonus/ftp/
+      dockerfile: Dockerfile
+    ports:
+      - "21:21"
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart: always

@@ -1,5 +1,8 @@
-all:
+all: up
+
+up:
 	@docker compose -f ./srcs/docker-compose.yml up -d --build
+
 down:
 	@docker compose -f ./srcs/docker-compose.yml down
 
@@ -17,8 +20,8 @@ fclean:
 	@docker system prune -a -f
 	@docker network prune -f
 	@docker volume prune -f
-	@sudo rm -rf ~/data/${USER}/wordpress/*
-	@sudo rm -rf ~/data/${USER}/mariadb/*
+	@sudo rm -rf ~/data/mallaoui/wordpress/*
+	@sudo rm -rf ~/data/mallaoui/mariadb/*
 
 re: down all
 
