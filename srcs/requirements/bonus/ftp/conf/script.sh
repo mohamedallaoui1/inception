@@ -8,13 +8,15 @@ echo "$FTP_USER:$FTP_PASSWORD" | /usr/sbin/chpasswd
 
 mkdir -p /var/ftp
 
-chown nobody:nogroup /var/ftp
+chown -R $FTP_USER /var/ftp
+
+chmod -R 755 /var/ftp
+
+chmod 757 -R /var/www/html
 
 cp /etc/vsftpd.conf /etc/vsftpd.conf.bak
 
-echo "listen=NO
-listen_ipv6=YES
-anonymous_enable=NO
+echo "listen=YES
 local_enable=YES
 write_enable=YES
 local_umask=022
@@ -22,7 +24,7 @@ dirmessage_enable=YES
 use_localtime=YES
 xferlog_enable=YES
 connect_from_port_20=YES
-chroot_local_user=YES
+chroot_local_user=NO
 secure_chroot_dir=/var/run/vsftpd/empty
 pam_service_name=vsftpd
 pasv_enable=Yes

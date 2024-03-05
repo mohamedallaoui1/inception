@@ -19,8 +19,6 @@ EOF
 wp core install --allow-root --path='/var/www/wordpress' --url=$DOMAIN --title=inception --admin_user=$MYSQL_USER --admin_password=$MYSQL_PASSWORD --admin_email=$ADMIN_EMAIL
 wp user create --allow-root --path='/var/www/wordpress' $USER $USER@gmail.com --user_pass=$USER
 
-wp plugin install redis-cache --activate --allow-root --path='/var/www/wordpress'
-
 until [ -f /var/www/wordpress/rediscache.bck ]
 do
     sleep 1
