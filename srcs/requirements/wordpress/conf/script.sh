@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sleep 10
+sleep 5
 
 wget https://wordpress.org/wordpress-6.4.3.tar.gz -P /var/www
 cd /var/www && tar -xzf wordpress-6.4.3.tar.gz && rm wordpress-6.4.3.tar.gz

@@ -3,89 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drawing Circles</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            overflow: hidden;
-            background-color: #000;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
-        .container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
         }
 
-        .drawing-circle {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background-color: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff, 0 0 60px #fff, 0 0 75px #fff;
-            animation: explode 2s ease-out;
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 0 1em;
         }
 
-        .drawing-circle::before, .drawing-circle::after {
-            content: '';
-            position: absolute;
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff, 0 0 60px #fff, 0 0 75px #fff;
-        }
-
-        .drawing-circle::before {
-            animation: glow 1s infinite alternate-reverse;
-        }
-
-        .drawing-circle::after {
-            animation: glow 1s infinite alternate;
-        }
-
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        @keyframes glow {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
         }
     </style>
+    <title>Simple Web Page</title>
 </head>
 <body>
-    <div class="container"></div>
+    <header>
+        <h1>Welcome to My Simple Web Page</h1>
+    </header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const container = document.querySelector('.container');
+    <section>
+        <p>A basic example of a static web page created using HTML and CSS.</p>
+    </section>
 
-            container.addEventListener('mousemove', function (event) {
-                const drawingCircle = document.createElement('div');
-                drawingCircle.className = 'drawing-circle';
-                drawingCircle.style.top = `${event.clientY}px`;
-                drawingCircle.style.left = `${event.clientX}px`;
-                container.appendChild(drawingCircle);
-
-                setTimeout(() => {
-                    container.removeChild(drawingCircle);
-                }, 8000);
-            });
-        });
-    </script>
+    <footer>
+        <p>&copy; 2024 MyWebPage. All rights reserved.</p>
+    </footer>
 </body>
 </html>
