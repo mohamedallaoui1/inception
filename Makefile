@@ -7,22 +7,13 @@ down:
 	@docker compose -f ./srcs/docker-compose.yml down
 
 clean:
-	@docker stop $$(docker ps -a -q)
-	@docker rm $$(docker ps -a -q)
-	@docker rmi $$(docker images -q)
-	@sudo rm -rf ~/data/${USER}/wordpress/*
-	@sudo rm -rf ~/data/${USER}/mariadb/*
+	@docker compose -f ./srcs/docker-compose.yml down --rmi all
 
-fclean:
-	@docker stop $$(docker ps -a -q)
-	@docker rm $$(docker ps -a -q)
-	@docker rmi $$(docker images -q)
-	@docker system prune -a -f
-	@docker network prune -f
+fclean: clean
+	@docker system prune -af
 	@docker volume prune -f
-	@sudo rm -rf ~/data/mallaoui/wordpress/*
-	@sudo rm -rf ~/data/mallaoui/mariadb/*
-
-re: down all
+	@docker network prune -f
+	@sudo rm -rf ~/data/wordpress/* && sudo rm -rf ~/data/mariadb/*
+re: fclean all
 
 .PHONY: all down clean re

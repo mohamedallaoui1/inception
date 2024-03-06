@@ -25,6 +25,7 @@ do
 done
 
 sleep 3
+
 wp redis enable --allow-root --path='/var/www/wordpress'
 
 

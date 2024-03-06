@@ -12,8 +12,6 @@ chown -R $FTP_USER /var/ftp
 
 chmod -R 755 /var/ftp
 
-chmod 757 -R /var/www/html
-
 cp /etc/vsftpd.conf /etc/vsftpd.conf.bak
 
 echo "listen=YES
