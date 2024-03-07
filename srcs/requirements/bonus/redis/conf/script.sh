@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-until [ -f /var/www/wordpress/wp-config.php ]
+until [ -f ./wp-config.php ]
 do
     sleep 1 
 done
