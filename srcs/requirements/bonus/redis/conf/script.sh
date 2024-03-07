@@ -6,7 +6,6 @@ do
     sleep 1 
 done
 
-
 chmod -R 777 .
 chown -R www-data:www-data .
 

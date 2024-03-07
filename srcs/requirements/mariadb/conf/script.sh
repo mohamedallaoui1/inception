@@ -6,7 +6,7 @@ sed -i "s#bind-address            = 127.0.0.1#bind-address=*#g" /etc/mysql/maria
 
 service mariadb start
 
-sleep 5
+sleep 2
 
 mariadb -hlocalhost -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
 

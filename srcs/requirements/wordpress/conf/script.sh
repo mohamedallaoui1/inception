@@ -1,6 +1,9 @@
 #! /bin/bash
 
-sleep 5
+until mariadb -h mariadb -u $MYSQL_USER -p$MYSQL_PASSWORD -e ";"
+do
+    sleep 1
+done
 
 wget https://wordpress.org/wordpress-6.4.3.tar.gz -P /var/www
 cd /var/www && tar -xzf wordpress-6.4.3.tar.gz && rm wordpress-6.4.3.tar.gz
@@ -24,13 +27,8 @@ do
     sleep 1
 done
 
-sleep 3
-
 wp redis enable --allow-root --path='/var/www/wordpress'
 
-
-if [ ! -d /run/php ]; then
-    mkdir /run/php 
-fi
+mkdir /run/php
 
 exec php-fpm7.4 -F
