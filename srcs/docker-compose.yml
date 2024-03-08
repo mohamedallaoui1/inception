@@ -21,7 +21,7 @@ networks:
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb
+    image: mariadb:my_image
     networks:
       - inception
     build:
@@ -37,7 +37,7 @@ services:
   
   nginx:
     container_name: nginx
-    image: nginx
+    image: nginx:my_image
     volumes:
       - wordpress:/var/www/wordpress
     networks:
@@ -55,7 +55,7 @@ services:
   
   wordpress:
     container_name: wordpress
-    image: wordpress
+    image: wordpress:my_image
     networks:
       - inception
     build:
@@ -74,7 +74,7 @@ services:
   
   redis:
     container_name: redis
-    image: redis
+    image: redis:my_image
     volumes:
       - wordpress:/var/www/wordpress
     networks:
@@ -88,7 +88,7 @@ services:
 
   static_page:
     container_name: static_page
-    image: static_page
+    image: static_page:my_image
     networks:
       - inception
     build:
@@ -100,7 +100,7 @@ services:
 
   ftp:
     container_name: ftp
-    image: ftp
+    image: ftp:my_image
     networks:
       - inception
     env_file:
@@ -117,7 +117,7 @@ services:
 
   cadvisor:
     container_name: cadvisor
-    image: advisor
+    image: advisor:my_image
     networks:
       - inception
     ports:
@@ -134,7 +134,7 @@ services:
   
   adminer:
     container_name: adminer
-    image: adminer
+    image: adminer:my_image
     build: 
       context: ./requirements/bonus/adminer/
       dockerfile: Dockerfile

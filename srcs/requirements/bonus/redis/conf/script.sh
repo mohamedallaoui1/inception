@@ -9,6 +9,7 @@ done
 chmod -R 777 .
 chown -R www-data:www-data .
 
+
 wp plugin install redis-cache --activate --allow-root --path='/var/www/wordpress'
 wp plugin update --all --allow-root --path='/var/www/wordpress'
 
